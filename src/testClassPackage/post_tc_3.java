@@ -1,11 +1,11 @@
 package testClassPackage;
 import java.io.IOException;
+
 import java.time.LocalDate;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import commonFunctionPackage.API_Common_Function_java;
-import commonFunctionPackage.utility_common_function;
+import commonFunctionPackage.API_common_Function;
+import commonFunctionPackage.Utility_commonFunction;
 import io.restassured.path.json.JsonPath;
 import requestRepositoryPackage.post_req_repository;
 public class post_tc_3 {
@@ -16,13 +16,13 @@ for(int i=0;i<5;i++)
 	String baseURI=post_req_repository.base_URI();
 	String requestBody=post_req_repository.post_request3();
 	String resource=post_req_repository.post_resource();
-	int statusCode=API_Common_Function_java.statusCode(baseURI, resource, requestBody );
+	int statusCode=API_common_Function.response_statuscode(baseURI, resource, requestBody );
 if(statusCode==201)
 {
-String responseBody=API_Common_Function_java.response_body(baseURI, resource, requestBody);
+String responseBody=API_common_Function.response_Body(baseURI, resource, requestBody);
 System.out.println(responseBody);
 post_tc_3.validator(responseBody, statusCode, requestBody);
-utility_common_function.evidencecreator("post_tc_3", responseBody, requestBody);
+Utility_commonFunction.evidencefilecreator("post_tc_3", responseBody, requestBody);
 break;
 }
 else 
